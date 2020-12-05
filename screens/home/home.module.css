@@ -1,0 +1,49 @@
+.home {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.homeConnection {
+  flex: 0 0 35%;
+  width: 35%;
+  border: 1px solid;
+  padding: 40px 30px;
+  border-radius: 8px;
+  box-shadow: 5px 5px 5px black;
+  text-align: center;
+}
+
+.homeConnectionTitle {
+  margin-bottom: 50px;
+}
+
+.homeConnectionButton {
+  background-color: #d93025;
+  border: 0;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  width: 100%;
+  outline: 0;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+@media (max-width: 900px) {
+  .homeConnection {
+    flex: 0 0 50%;
+    width: 50%;
+  }
+}
+
+@media (max-width: 600px) {
+  .homeConnection {
+    flex: 0 0 70%;
+    width: 70%;
+  }
+}
