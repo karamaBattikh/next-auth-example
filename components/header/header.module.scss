@@ -1,0 +1,64 @@
+.headerWrapper {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  border: 1px solid rosybrown;
+}
+
+.headerLogo {
+  cursor: pointer;
+  max-width: 150px;
+}
+
+.headerNav {
+  list-style: none;
+  li {
+    display: inline;
+
+    a {
+      padding: 0 20px;
+      vertical-align: middle;
+    }
+  }
+}
+
+.headerRight {
+  margin-left: auto;
+  display: flex;
+  & > * + * {
+    margin-left: 8px;
+  }
+}
+
+.headerRightSearch {
+  position: relative;
+  input {
+    padding: 15px;
+    padding-right: 50px;
+    border-radius: 25px;
+    border: 0;
+    background-color: #d3d3d3;
+  }
+  button {
+    position: absolute;
+    cursor: pointer;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 26px;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    background: url("/icons/loupe.svg") no-repeat;
+  }
+}
+
+.headerRightProfil {
+  img {
+    vertical-align: middle;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  }
+}
