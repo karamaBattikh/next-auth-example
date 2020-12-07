@@ -1,13 +1,16 @@
 .headerWrapper {
   display: flex;
-  padding: 20px;
+  flex-wrap: wrap;
+  padding: 16px;
   align-items: center;
-  border: 1px solid rosybrown;
+  border-bottom: 1px solid rosybrown;
+  position: relative;
 }
 
 .headerLogo {
   cursor: pointer;
   max-width: 150px;
+  border: 1px solid rebeccapurple;
 }
 
 .headerNav {
@@ -16,49 +19,40 @@
     display: inline;
 
     a {
-      padding: 0 20px;
+      padding: 0 10px;
       vertical-align: middle;
     }
   }
 }
 
-.headerRight {
-  margin-left: auto;
+.headerProfile {
   display: flex;
-  & > * + * {
-    margin-left: 8px;
-  }
-}
-
-.headerRightSearch {
+  align-items: center;
+  margin-left: auto;
   position: relative;
-  input {
-    padding: 15px;
-    padding-right: 50px;
-    border-radius: 25px;
-    border: 0;
-    background-color: #d3d3d3;
-  }
-  button {
-    position: absolute;
-    cursor: pointer;
-    right: 4px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 25px;
-    height: 26px;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    background: url("/icons/loupe.svg") no-repeat;
-  }
-}
 
-.headerRightProfil {
+  & > * + * {
+    margin-left: 10px;
+  }
+
   img {
     vertical-align: middle;
     width: 45px;
     height: 45px;
     border-radius: 50%;
+  }
+}
+
+.headerProfileMenu {
+  position: absolute;
+  padding: 5px 5px;
+  border: 1px solid royalblue;
+  background-color: wheat;
+  right: 0;
+  top: 100%;
+  width: 100%;
+  & > * {
+    padding: 5px;
+    display: block;
   }
 }

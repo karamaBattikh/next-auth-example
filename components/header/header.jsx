@@ -1,49 +1,63 @@
+import { useState } from "react";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/client";
 import styles from "./header.module.scss";
 
 const Header = () => {
-  console.log("-----");
+  const [toggle, setToggle] = useState(false);
+  const [session, loading] = useSession();
+
   return (
     <header>
       <div className={styles.headerWrapper}>
         <Link href="/" passHref>
           <a className={styles.headerLogo}>image du Logo</a>
         </Link>
-
         <nav>
           <ul className={styles.headerNav}>
             <li>
-              <Link href="/">
+              <Link href="/" passHref>
                 <a>Home</a>
               </Link>
             </li>
             <li>
-              <Link href="/about">
+              <Link href="/about" passHref>
                 <a>About Us</a>
               </Link>
             </li>
             <li>
-              <Link href="/blogs">
+              <Link href="/blogs" passHref>
                 <a>Blog Post</a>
               </Link>
             </li>
           </ul>
         </nav>
+        <div className={styles.headerProfile}>
+          {session && (
+            <>
+              <p> {session?.user?.name}</p>
+              <button type="button" onClick={() => setToggle(!toggle)}>
+                <img src={session?.user?.image} alt="profile-photo" />
+              </button>
+            </>
+          )}
 
-        <div className={styles.headerRight}>
-          <div className={styles.headerRightSearch}>
-            <input
-              type="text"
-              name="search"
-              id="search"
-              placeholder="What do you want to learn?"
-            />
-            <button type="button" />
-          </div>
+          {!session && (
+            <Link href="/" passHref>
+              <a type="button">Sign Int</a>
+            </Link>
+          )}
 
-          <div className={styles.headerRightProfil}>
-            <img src="/images/avatar.jpg" alt="profil-photo" />
-          </div>
+          {toggle && (
+            <div className={styles.headerProfileMenu}>
+              <Link href="/profile" passHref>
+                <a>Profil</a>
+              </Link>
+              <button type="button" onClick={signOut}>
+                Sign out
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </header>
