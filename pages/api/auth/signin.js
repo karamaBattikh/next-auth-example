@@ -1,7 +1,6 @@
 import { providers, signIn } from "next-auth/client";
 
 export default function SignIn({ providers }) {
-  console.log("🚀 ~ file: signin.js ~ line 4 ~ SignIn ~ providers", providers);
   return (
     <>
       {Object.values(providers).map((provider) => (

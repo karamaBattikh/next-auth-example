@@ -1,14 +1,28 @@
-import { useSession } from "next-auth/client";
+import { getSession } from "next-auth/client";
 
-const ProfilePage = () => {
-  const [session, loading] = useSession();
+const ProfilePage = ({ user }) => {
   return (
     <div>
       <h1>Profile Page</h1>
-      <p>Name: {session?.user?.name}</p>
-      <p>Email: {session?.user?.email}</p>
+      <p>Name: {user?.name}</p>
+      <p>Email: {user?.email}</p>
     </div>
   );
 };
 
 export default ProfilePage;
+
+export async function getServerSideProps(ctx) {
+  const session = await getSession(ctx);
+  if (!session) {
+    ctx.res.writeHead(302, { Location: "/" });
+    ctx.res.end();
+    return {};
+  }
+
+  return {
+    props: {
+      user: session.user,
+    },
+  };
+}

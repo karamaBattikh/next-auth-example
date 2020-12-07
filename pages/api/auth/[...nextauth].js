@@ -22,7 +22,7 @@ const options = {
     // decode: async ({ secret, token, maxAge }) => {},
   },
   pages: {
-    signIn: "/auth/signin", // Displays signin buttons
+    signIn: "/api/auth/signin", // Displays signin buttons
     // signOut: '/api/auth/signout', // Displays form with sign out button
     // error: '/api/auth/error', // Error code passed in query string as ?error=
     // verifyRequest: '/api/auth/verify-request', // Used for check email page
@@ -40,6 +40,12 @@ const options = {
         return Promise.resolve(false);
       }
     },
+    // redirect: async (url, baseUrl) => {
+    //   if (url === "/api/auth/signin") {
+    //     return Promise.resolve("/profile");
+    //   }
+    //   return Promise.resolve("/");
+    // },
     // redirect: async (url, baseUrl) => {
     //   return url.startsWith(baseUrl)
     //     ? Promise.resolve(url)

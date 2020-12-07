@@ -44,14 +44,14 @@ const Header = () => {
 
           {!session && (
             <Link href="/" passHref>
-              <a type="button">Sign Int</a>
+              <a>Sign Int</a>
             </Link>
           )}
 
           {toggle && (
             <div className={styles.headerProfileMenu}>
               <Link href="/profile" passHref>
-                <a>Profil</a>
+                <a onClick={() => setToggle(false)}>Profil</a>
               </Link>
               <button type="button" onClick={signOut}>
                 Sign out
