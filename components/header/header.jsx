@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/client";
+import useClickOutside from "hooks/useOnclickOutside";
 import styles from "./header.module.scss";
 
 const Header = () => {
+  const ref = useRef();
   const [toggle, setToggle] = useState(false);
   const [session, loading] = useSession();
-
+  useClickOutside(ref, () => setToggle(false));
   return (
     <header>
       <div className={styles.headerWrapper}>
         <Link href="/" passHref>
-          <a className={styles.headerLogo}>image du Logo</a>
+          <a className={styles.headerLogo}> Logo</a>
         </Link>
         <nav>
           <ul className={styles.headerNav}>
@@ -32,7 +34,7 @@ const Header = () => {
             </li>
           </ul>
         </nav>
-        <div className={styles.headerProfile}>
+        <div className={styles.headerProfile} ref={ref}>
           {session && (
             <>
               <p> {session?.user?.name}</p>

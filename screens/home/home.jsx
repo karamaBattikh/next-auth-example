@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/client";
 import styles from "./home.module.css";
 
@@ -10,18 +9,17 @@ const Home = () => {
       {!session && (
         <div className={styles.homeConnection}>
           <h2 className={styles.homeConnectionTitle}>Connexion</h2>
-          <Link href="/api/auth/signin" passHref>
-            <a
-              onClick={(e) => {
-                e.preventDefault();
-                signIn("google");
-              }}
-            >
-              <button type="button" className={styles.homeConnectionButton}>
-                Connectez-vous via Google
-              </button>
-            </a>
-          </Link>
+
+          <button
+            type="button"
+            className={styles.homeConnectionButton}
+            onClick={(e) => {
+              e.preventDefault();
+              signIn("google");
+            }}
+          >
+            Connectez-vous via Google
+          </button>
         </div>
       )}
 
